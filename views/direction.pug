@@ -1,0 +1,33 @@
+extends layouts/_layout.pug
+
+block variables
+    - var activePage = 'direction'
+    - var activeGroup = 'none'
+
+block content
+    .app-title
+        div
+            h1
+                i.fa.fa-dashboard
+                |  Ваша Пожелания
+
+        ul.app-breadcrumb.breadcrumb
+            li.breadcrumb-item
+                i.fa.fa-home.fa-lg
+            li.breadcrumb-item
+                a(href='#') Ваша Пожелания
+
+
+    .row
+        .col-md-3.col-lg-3
+            .tile
+                form(action="/direction", method="post")
+                    h4 Выберите Ваши Пожелания
+                    each direction in directions
+                        .animated-checkbox
+                            label
+                                input(type="checkbox", value=direction.id, name="direction")
+                                span.label-text #{direction.name}
+                    button.btn.btn-primary(type='submit') Выбрать
+
+
